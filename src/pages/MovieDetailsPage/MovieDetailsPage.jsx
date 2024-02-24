@@ -4,7 +4,6 @@ import { getMovieById } from '../../api';
 import { Loading } from '../../components/Loading/Loading';
 import { Error } from '../../components/Error/Error';
 import { Pagedetail } from '../../components/Pagedetail/Pagedetail';
-import Movie from './MovieCast';
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [error, setError] = useState(false);
@@ -37,7 +36,7 @@ export default function MovieDetailsPage() {
       {moviedetails && <Pagedetail pagedetail={moviedetails} />}
       {error && <Error />}
       {loading && <Loading />}
-      <Link to="Cast">{<Movie />}</Link>
+      <Link to="Cast">Cast</Link>
       <Link to="Reviews">Reviews</Link>
       <Outlet />
     </div>
