@@ -1,4 +1,4 @@
-.button_back_page {
+.not_found_button {
   color: rgb(255, 255, 255);
   font-size: 14px;
   font-style: normal;
@@ -15,6 +15,6 @@
   transition: 175ms ease-in-out;
   text-align: center;
 }
-.button_back_page:hover {
+.not_found_button:hover {
   color: aqua;
 }

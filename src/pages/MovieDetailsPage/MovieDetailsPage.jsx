@@ -14,6 +14,7 @@ export default function MovieDetailsPage() {
   const buildLinkClass = ({ isActive }) => {
     return clsx(css.NavLink, isActive && css.active);
   };
+
   useEffect(() => {
     async function fetchDataId() {
       try {

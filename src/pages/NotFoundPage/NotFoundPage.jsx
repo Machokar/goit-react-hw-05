@@ -9,7 +9,7 @@ export default function NotFoundPage() {
     <div>
       <h1>Sorry, we did not get page</h1>
       <NavLink to={goBack.current}>
-        <button className={css.button_back_page}>Back to home page</button>
+        <button className={css.not_found_button}>Back to home page</button>
       </NavLink>
     </div>
   );
