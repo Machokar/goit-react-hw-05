@@ -1,37 +1,57 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+const API_KEY = '3924a3dacaa6ef4b17a703b0df801285';
 
 export const getTrendingMovies = async controller => {
+  const url = `trending/movie/day`;
   const options = {
-    signal: controller.signal,
-    headers: {
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNWM0ZGRlOWVmZDkxZDQyODRiMzI1YmZiOWRjYjZiYiIsInN1YiI6IjY1Y2JiNjZkOGM0NGI5MDE4MDk0MTU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uprme_0UI87pLZa_NGdmKRSH8vOt8labpp7A0pO3uvA',
+    params: {
+      signal: controller.signal,
+      api_key: API_KEY,
     },
   };
-  const response = await axios.get('trending/movie/day', options);
+  const response = await axios.get(url, options);
   return response.data;
 };
-export const getMovieById = async (controller, id) => {
+export const getMovieById = async query => {
+  const url = `movie/${query}`;
   const options = {
-    signal: controller.signal,
-    headers: {
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNWM0ZGRlOWVmZDkxZDQyODRiMzI1YmZiOWRjYjZiYiIsInN1YiI6IjY1Y2JiNjZkOGM0NGI5MDE4MDk0MTU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uprme_0UI87pLZa_NGdmKRSH8vOt8labpp7A0pO3uvA',
+    params: {
+      api_key: API_KEY,
     },
   };
-  const response = await axios.get(`movie/${id}`, options);
+  const response = await axios.get(url, options);
   return response.data;
 };
-export const getMovieCast = async (controller, id) => {
+export const getMovieCast = async query => {
+  const url = `/movie/${query}/credits`;
   const options = {
-    signal: controller.signal,
-    headers: {
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNWM0ZGRlOWVmZDkxZDQyODRiMzI1YmZiOWRjYjZiYiIsInN1YiI6IjY1Y2JiNjZkOGM0NGI5MDE4MDk0MTU2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uprme_0UI87pLZa_NGdmKRSH8vOt8labpp7A0pO3uvA',
+    params: {
+      api_key: API_KEY,
     },
   };
-  const response = await axios.get(`movie/${id}/credits`, options);
+  const response = await axios.get(url, options);
+  return response.data.cast;
+};
+export const getSerchMovie = async query => {
+  const url = '/search/movie';
+  const options = {
+    params: {
+      query,
+      api_key: API_KEY,
+    },
+  };
+  const response = await axios.get(url, options);
   return response.data;
+};
+export const getMovieReview = async query => {
+  const url = `/movie/${query}/reviews`;
+  const options = {
+    params: {
+      api_key: API_KEY,
+    },
+  };
+  const response = await axios.get(url, options);
+  return response.data.results;
 };

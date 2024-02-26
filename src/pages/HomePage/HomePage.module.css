@@ -1,0 +1,17 @@
+.title {
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
+.homepage_item {
+  margin-bottom: 10px;
+}
+
+.NavLink {
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.NavLink:hover {
+  text-decoration: underline;
+  color: blue;
+}

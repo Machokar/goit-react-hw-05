@@ -1,22 +1,25 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
 import { getMovieById } from '../../api';
 import { Loading } from '../../components/Loading/Loading';
 import { Error } from '../../components/Error/Error';
 import { Pagedetail } from '../../components/Pagedetail/Pagedetail';
+import clsx from 'clsx';
+import css from './MovieDetailsPage.module.css';
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [moviedetails, setMoviedetails] = useState(null);
+  const buildLinkClass = ({ isActive }) => {
+    return clsx(css.NavLink, isActive && css.active);
+  };
   useEffect(() => {
-    const controller = new AbortController();
     async function fetchDataId() {
       try {
         setLoading(true);
-        const response = await getMovieById(controller, movieId);
+        const response = await getMovieById(movieId);
         setMoviedetails(response);
-        console.log(response);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
           setError(true);
@@ -26,9 +29,6 @@ export default function MovieDetailsPage() {
       }
     }
     fetchDataId();
-    return () => {
-      controller.abort();
-    };
   }, [movieId]);
 
   return (
@@ -36,8 +36,14 @@ export default function MovieDetailsPage() {
       {moviedetails && <Pagedetail pagedetail={moviedetails} />}
       {error && <Error />}
       {loading && <Loading />}
-      <Link to="Cast">Cast</Link>
-      <Link to="Reviews">Reviews</Link>
+      <div className={css.box_nawlink}>
+        <NavLink to="Cast" className={buildLinkClass}>
+          Cast
+        </NavLink>
+        <NavLink to="Reviews" className={buildLinkClass}>
+          Reviews
+        </NavLink>
+      </div>
       <Outlet />
     </div>
   );

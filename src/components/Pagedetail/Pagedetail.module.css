@@ -1,0 +1,48 @@
+.detailpage_box {
+  display: flex;
+  gap: 367px;
+  align-items: center;
+}
+.detail_information {
+  display: block;
+  text-align: center;
+}
+.main_img {
+  max-width: 300px;
+}
+.overview {
+  max-width: 400px;
+}
+.genres {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.percents {
+  font-size: 18px;
+}
+.button_back_page {
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  background-color: rgb(5, 5, 5);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: block;
+  min-width: 77px;
+  height: 38px;
+  border: none;
+  border-radius: 5px;
+  transition: 175ms ease-in-out;
+  text-align: center;
+}
+.button_back_page:hover {
+  color: aqua;
+}
+.button_img_items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
