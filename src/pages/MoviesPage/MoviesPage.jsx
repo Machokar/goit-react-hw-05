@@ -3,6 +3,7 @@ import { NavLink, useSearchParams } from 'react-router-dom';
 import { getSerchMovie } from '../../api';
 import css from './MoviesPage.module.css';
 import clsx from 'clsx';
+import { MovieList } from '../../components/MovieList/MovieList';
 
 export default function MoviesPage() {
   const [params, setParams] = useSearchParams('');
@@ -54,15 +55,7 @@ export default function MoviesPage() {
           Search
         </button>
       </form>
-      <ul>
-        {result.map(movie => (
-          <li key={movie.id} className={css.homepage_item}>
-            <NavLink to={`/movies/${movie.id}`} className={buildLinkClass}>
-              {movie.title}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+      <MovieList movies={result} />
     </div>
   );
 }

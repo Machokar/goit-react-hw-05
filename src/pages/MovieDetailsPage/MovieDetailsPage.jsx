@@ -37,10 +37,10 @@ export default function MovieDetailsPage() {
       {error && <Error />}
       {loading && <Loading />}
       <div className={css.box_nawlink}>
-        <NavLink to="Cast" className={buildLinkClass}>
+        <NavLink to="cast" className={buildLinkClass}>
           Cast
         </NavLink>
-        <NavLink to="Reviews" className={buildLinkClass}>
+        <NavLink to="reviews" className={buildLinkClass}>
           Reviews
         </NavLink>
       </div>
