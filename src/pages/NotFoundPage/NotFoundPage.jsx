@@ -1,10 +1,16 @@
-import { Link } from 'react-router-dom';
+import { useRef } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import css from './NotFoundPage.module.css';
 
 export default function NotFoundPage() {
+  const location = useLocation();
+  const goBack = useRef(location?.state?.from ?? '/');
   return (
     <div>
       <h1>Sorry, we did not get page</h1>
-      <Link to="/">Back to home page</Link>
+      <NavLink to={goBack.current}>
+        <button className={css.button_back_page}>Back to home page</button>
+      </NavLink>
     </div>
   );
 }

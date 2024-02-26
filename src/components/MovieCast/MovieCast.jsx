@@ -31,23 +31,21 @@ export default function MovieCast() {
       {error && <Error />}
       {loading && <Loading />}
       <ul>
-        {casts
-          .filter(cast => cast.profile_path !== null)
-          .map(cast => (
-            <li key={cast.id}>
-              <img
-                src={
-                  cast.profile_path
-                    ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}`
-                    : defaultImg
-                }
-                width={200}
-                alt={cast.name}
-              />
-              <p>{cast.name}</p>
-              <p>Character:{cast.character}</p>
-            </li>
-          ))}
+        {casts.map(cast => (
+          <li key={cast.id}>
+            <img
+              src={
+                cast.profile_path
+                  ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}`
+                  : defaultImg
+              }
+              width={200}
+              alt={cast.name}
+            />
+            <p>{cast.name}</p>
+            <p>Character:{cast.character}</p>
+          </li>
+        ))}
       </ul>
     </>
   );
